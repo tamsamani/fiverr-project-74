@@ -9,7 +9,7 @@ class Table extends React.Component {
 		const cone = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 		const fee = 0.01;
 
-		var timeSeries = calculateTimeSeries({
+		let timeSeries = calculateTimeSeries({
 			mu: cone.mu,
 			sigma: cone.sigma,
 			years: 10,
@@ -19,7 +19,7 @@ class Table extends React.Component {
 		});
 
 		const months = timeSeries.median.map((v, idx) => idx);
-		var dataGood = timeSeries.upper95.map(v => v.y);
+		let dataGood = timeSeries.upper95.map(v => v.y);
 		let dataMedian = timeSeries.median.map(v => v.y);
 		const dataBad = timeSeries.lower05.map(v => v.y);
 
@@ -32,7 +32,7 @@ class Table extends React.Component {
 			</tr>
 		));
 
-		var tableHeader = React.createElement("tr", {}, [
+		let tableHeader = React.createElement("tr", {}, [
 			React.createElement("th", { key: "month" }, "month"),
 			React.createElement("th", { key: "good" }, "good"),
 			React.createElement("th", { key: "median" }, "median"),

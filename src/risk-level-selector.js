@@ -9,15 +9,15 @@ class RiskLevelSelector extends React.Component {
 
 	onChange(event) {
 		let { onChangeRiskLevel } = this.props;
-		var riskLevel = parseInt(event.target.value);
+		let riskLevel = parseInt(event.target.value);
 		onChangeRiskLevel(riskLevel);
 	}
 
 	render() {
 		const { minRiskLevel, maxRiskLevel } = this.props;
-		var defultRiskl = 10;
+		let defultRiskl = 10;
 		const options = [];
-		for (let k = 1; k <= maxRiskLevel; ++k) {
+		for (let k = 1; k <= maxRiskLevel; k++) {
 			options.push(
 				<option key={k} value={k}>
 					{k}
