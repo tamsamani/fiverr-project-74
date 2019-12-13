@@ -19,8 +19,14 @@ module.exports = {
 		historyApiFallback: true,
 		before: function(app) {
 			app.get("/api/cones", function(req, res) {
-				// TODO make some changes as real time happend here
-				res.json(cones);
+				// make some changes as real time happend here
+				let timespan = (Date.now() / 6000) >> 0; // changes each 6 secs
+				let timedCones = cones.map(({ riskLevel, mu, sigma }) => ({
+					riskLevel,
+					mu: mu + Math.sin(timespan) / 99,
+					sigma: sigma + Math.cos(timespan) / 99
+				}));
+				res.json(timedCones);
 			});
 		}
 	},
