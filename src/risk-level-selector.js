@@ -14,7 +14,8 @@ class RiskLevelSelector extends React.Component {
 		const defultRiskl = 10;
 		const options = [];
 
-		for (let k = 1; k <= maxRiskLevel; k++) {
+		// Fix non-esist risk values.
+		for (let k = minRiskLevel; k <= maxRiskLevel; k++) {
 			options.push(
 				<option key={k} value={k}>
 					{k}
