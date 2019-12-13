@@ -12,6 +12,7 @@ in this minor version I will change in API getting & store managmement app
 
 **ADDED**
 
+-   add Simple store & Reducer for managing data of API & apply on general Index file
 -   add `axios` a lib for fetch data from api, it's helpfull
 -   add `<Loader />` Component for wait till loading API data.
 -   add `<Header />` Component for make menu and other navigation components seperated than routes.
@@ -21,10 +22,12 @@ in this minor version I will change in API getting & store managmement app
 -   `cones.json` no longer loaded as static from json in chart & table pages.
 -   replace routes to `<Routes />` Component who wrapped whole routes seperatly.
 -   move each component & module to Right folder instead keep all in `src/` root.
+-   make API more Dynamilcally by make it change every 6 secs with looseless changes dependamt to real `cones` JSON file.
+-   Update App, table, chart & Risk component by new Store managing.
 
 **FIXED**
 
--   Fix non-exist option of Risk
+-   Fix non-exist options of Risk
 
 ### version 1.0.1 (11/12/2019)
 

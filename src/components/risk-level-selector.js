@@ -1,50 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
-class RiskLevelSelector extends React.Component {
-	// not required bind or declare class by babel plugin proposal class properties.
-	onChange = event => {
-		const { onChangeRiskLevel } = this.props;
+import storeContext from "../modules/store";
+
+const RiskLevelSelector = props => {
+	const [state, dispatch] = useContext(storeContext);
+
+	const { minRiskLevel, maxRiskLevel } = props;
+	const defultRisk = 10;
+	const options = [];
+
+	const onChangeRisk = event => {
 		const riskLevel = parseInt(event.target.value);
-		onChangeRiskLevel(riskLevel);
+		dispatch({ type: "CHANGE_RISK_LEVEL", payload : { riskLevel } });
 	};
 
-	render() {
-		const { minRiskLevel, maxRiskLevel } = this.props;
-		const defultRiskl = 10;
-		const options = [];
-
-		// Fix non-esist risk values.
-		for (let k = minRiskLevel; k <= maxRiskLevel; k++) {
-			options.push(
-				<option key={k} value={k}>
-					{k}
-				</option>
-			);
-		}
-
-		return (
-			<div>
-				Risk level:
-				<select onChange={this.onChange} defaultValue={defultRiskl}>
-					{options}
-				</select>
-			</div>
+	// Fix non-exist risk values.
+	for (let k = minRiskLevel; k <= maxRiskLevel; k++) {
+		options.push(
+			<option key={k} value={k}>
+				{k}
+			</option>
 		);
 	}
-}
+
+	return (
+		<div>
+			Risk level:
+			<select onChange={onChangeRisk} defaultValue={defultRisk}>
+				{options}
+			</select>
+		</div>
+	);
+};
 
 // FIXME from cones set defaults.
 RiskLevelSelector.defaultProps = {
 	minRiskLevel: 3,
-	maxRiskLevel: 25,
-	onChangeRiskLevel: () => {}
+	maxRiskLevel: 25
 };
 
 RiskLevelSelector.propTypes = {
 	minRiskLevel: PropTypes.number,
-	maxRiskLevel: PropTypes.number,
-	onChangeRiskLevel: PropTypes.func
+	maxRiskLevel: PropTypes.number
 };
 
 export default RiskLevelSelector;

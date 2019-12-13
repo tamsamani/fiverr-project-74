@@ -1,42 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 
 import Routes from "./Routes";
 import Loader from "./components/Loader";
 import Header from "./components/Header";
 
-export default class App extends React.Component {
-	state = {
-		riskLevel: 10,
-		loaded: false
-	};
+import storeContext from "./modules/store";
 
-	cones = null;
-
-	onChangeRiskLevel = riskLevel => this.setState({ riskLevel });
-
-	onDataLoaded = () => this.setState({ loaded: true });
-
-	componentDidMount() {
-		axios
-			.get(`/api/cones`)
-			.then(res => {
-				this.cones = res.data;
-				this.onDataLoaded();
-			})
-			.catch(error => {
-				console.log(error);
+function loadData(state, dispatch) {
+	axios
+		.get(`/api/cones`)
+		.then(response => {
+			const cones = response.data;
+			dispatch({
+				type: "LOAD_CONES",
+				payload: { cones }
 			});
+		})
+		.catch(error => {
+			console.log(error);
+			dispatch({
+				type: "LOAD_ERROR",
+				payload: { error }
+			});
+		});
+}
+
+function App(props) {
+	const [state, dispatch] = useContext(storeContext);
+
+	if (!state.loaded) {
+		// loading data
+		loadData(state, dispatch);
 	}
 
-	render() {
-		const { riskLevel, loaded } = this.state;
-		return !loaded ? (
-			<Loader />
-		) : (
-			<Routes riskLevel={riskLevel} cones={this.cones}>
-				<Header onChangeRiskLevel={this.onChangeRiskLevel} />
-			</Routes>
-		);
-	}
+	return !state.loaded ? (
+		<Loader />
+	) : (
+		<Routes>
+			<Header />
+		</Routes>
+	);
 }
+
+export default App;
