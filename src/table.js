@@ -1,11 +1,10 @@
 const React = require("react");
 import PropTypes from "prop-types";
 import { calculateTimeSeries } from "./utils";
-import cones from "./../cones";
 
 class Table extends React.Component {
 	render() {
-		const { riskLevel } = this.props;
+		const { riskLevel, cones } = this.props;
 		const cone = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 		const fee = 0.01;
 

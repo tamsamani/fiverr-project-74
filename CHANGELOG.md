@@ -4,8 +4,19 @@
 
 here I will describe all changes in code.
 
-### version 1.0.1 (11/12/2019)
+### version 1.0.2 (13/12/2019)
+---
+in this minor version I will change in API getting & store managmement app
 
+**ADDED**
+
+-	add `axios` a lib for fetch data from api, it's helpfull
+-	add `<Loader />` Component for wait till loading API data.
+
+**CHANGED**
+-	`cones.json` no longer loaded as static from json in chart & table pages.
+
+### version 1.0.1 (11/12/2019)
 ---
 
 in this version I will refactoring the code & make it enhanced.

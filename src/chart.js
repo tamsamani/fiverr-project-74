@@ -1,7 +1,6 @@
 import React from "react";
 import { Chart as ChartJs } from "chart.js";
 import { calculateTimeSeries } from "./utils";
-import cones from "./../cones";
 
 class Chart extends React.Component {
 	componentDidMount() {
@@ -9,7 +8,7 @@ class Chart extends React.Component {
 	}
 
 	drawChart() {
-		const { riskLevel } = this.props;
+		const { riskLevel, cones } = this.props;
 		const { mu, sigma } = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 		const fee = 0.01;
 
