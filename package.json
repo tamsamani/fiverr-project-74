@@ -1,6 +1,6 @@
 {
 	"name": "frontend-test-assignment",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Test Assignment For Frontend Developers",
 	"main": "index.js",
 	"scripts": {

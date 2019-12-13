@@ -4,6 +4,12 @@
 
 here I will describe all changes in code.
 
+### version 1.0.3 (13/12/2019)
+
+---
+
+added some controlers & features to app.
+
 ### version 1.0.2 (13/12/2019)
 
 ---
