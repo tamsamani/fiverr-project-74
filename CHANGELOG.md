@@ -14,10 +14,12 @@ in this minor version I will change in API getting & store managmement app
 
 -   add `axios` a lib for fetch data from api, it's helpfull
 -   add `<Loader />` Component for wait till loading API data.
+-   add `<Header />` Component for make menu and other navigation components seperated than routes.
 
 **CHANGED**
 
 -   `cones.json` no longer loaded as static from json in chart & table pages.
+-   replace routes to `<Routes />` Component who wrapped whole routes seperatly.
 
 **FIXED**
 
