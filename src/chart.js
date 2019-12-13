@@ -10,23 +10,12 @@ class Chart extends React.Component {
 
 	drawChart() {
 		const { riskLevel } = this.props;
-		const { mu, sigma } = cones.filter(
-			cone => cone.riskLevel == riskLevel
-		)[0];
+		const { mu, sigma } = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 		const fee = 0.01;
 
-		const timeSeries = calculateTimeSeries({
-			mu,
-			sigma,
-			years: 10,
-			initialSum: 10000,
-			monthlySum: 200,
-			fee
-		});
+		const timeSeries = calculateTimeSeries({ mu, sigma, years: 10, initialSum: 10000, monthlySum: 200, fee });
 
-		const labels = timeSeries.median.map((v, idx) =>
-			idx % 12 == 0 ? idx / 12 : ""
-		);
+		const labels = timeSeries.median.map((v, idx) => (idx % 12 == 0 ? idx / 12 : ""));
 		const dataMedian = timeSeries.median.map(v => v.y);
 		const dataGood = timeSeries.upper95.map(v => v.y);
 		const dataBad = timeSeries.lower05.map(v => v.y);
@@ -64,22 +53,14 @@ class Chart extends React.Component {
 				xAxes: [
 					{
 						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: "Years"
-						},
-						gridLines: {
-							drawOnChartArea: false
-						}
+						scaleLabel: { display: true, labelString: "Years" },
+						gridLines: { drawOnChartArea: false }
 					}
 				],
 				yAxes: [
 					{
 						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: "Valuation (EUR)"
-						}
+						scaleLabel: { display: true, labelString: "Valuation (EUR)" }
 					}
 				]
 			}
@@ -99,11 +80,7 @@ class Chart extends React.Component {
 	render() {
 		return (
 			<div>
-				<canvas
-					ref={ref => (this.canvas = ref)}
-					width={600}
-					height={400}
-				/>
+				<canvas ref={ref => (this.canvas = ref)} width={600} height={400} />
 			</div>
 		);
 	}

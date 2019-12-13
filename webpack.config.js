@@ -10,10 +10,7 @@ module.exports = {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "build")
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new CopyWebpackPlugin([{ from: "public/index.html" }])
-	],
+	plugins: [new webpack.HotModuleReplacementPlugin(), new CopyWebpackPlugin([{ from: "public/index.html" }])],
 	devServer: {
 		port: 3000,
 		contentBase: path.join(__dirname, "./public"),
@@ -22,6 +19,7 @@ module.exports = {
 		historyApiFallback: true,
 		before: function(app) {
 			app.get("/api/cones", function(req, res) {
+				// TODO make some changes as real time happend here
 				res.json(cones);
 			});
 		}

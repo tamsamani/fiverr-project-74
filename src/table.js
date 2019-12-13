@@ -5,11 +5,11 @@ import cones from "./../cones";
 
 class Table extends React.Component {
 	render() {
-		let { riskLevel } = this.props;
+		const { riskLevel } = this.props;
 		const cone = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 		const fee = 0.01;
 
-		let timeSeries = calculateTimeSeries({
+		const timeSeries = calculateTimeSeries({
 			mu: cone.mu,
 			sigma: cone.sigma,
 			years: 10,
@@ -19,8 +19,8 @@ class Table extends React.Component {
 		});
 
 		const months = timeSeries.median.map((v, idx) => idx);
-		let dataGood = timeSeries.upper95.map(v => v.y);
-		let dataMedian = timeSeries.median.map(v => v.y);
+		const dataGood = timeSeries.upper95.map(v => v.y);
+		const dataMedian = timeSeries.median.map(v => v.y);
 		const dataBad = timeSeries.lower05.map(v => v.y);
 
 		const rows = months.map((entry, idx) => (
@@ -32,16 +32,18 @@ class Table extends React.Component {
 			</tr>
 		));
 
-		let tableHeader = React.createElement("tr", {}, [
-			React.createElement("th", { key: "month" }, "month"),
-			React.createElement("th", { key: "good" }, "good"),
-			React.createElement("th", { key: "median" }, "median"),
-			React.createElement("th", { key: "bad" }, "bad")
-		]);
+		// remove component unecessary usage
+		const tableHeaders = ["month", "good", "median", "bad"];
 
 		return (
 			<table>
-				<thead>{tableHeader}</thead>
+				<thead>
+					<tr>
+						{tableHeaders.map(key => (
+							<th key={key}>{key}</th>
+						))}
+					</tr>
+				</thead>
 				<tbody>{rows}</tbody>
 			</table>
 		);

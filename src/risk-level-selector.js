@@ -2,16 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class RiskLevelSelector extends React.Component {
-	constructor(props) {
-		super(props);
-		this.onChange = this.onChange.bind(this);
-	}
 
-	onChange(event) {
+	// not required bind or declare class by babel plugin proposal class properties.
+	onChange = event => {
 		let { onChangeRiskLevel } = this.props;
 		let riskLevel = parseInt(event.target.value);
 		onChangeRiskLevel(riskLevel);
-	}
+	};
 
 	render() {
 		const { minRiskLevel, maxRiskLevel } = this.props;

@@ -21,13 +21,13 @@ function mapDate({ t, mu, sigma, fee, initialSum, monthlySum }) {
 }
 
 const calculateTimeSeries = ({ years, mu, sigma, fee, initialSum, monthlySum }) => {
-	let series = [];
+	const series = [];
 	for (let k = 0; k <= 12 * years; k++) {
 		series.push(mapDate({ t: k / 12, mu, sigma, fee, initialSum, monthlySum }));
 	}
 
 	// set each serie line.
-	let allSeries = {
+	const allSeries = {
 		median: series.map(serie => ({ y: serie.median, x: serie.x })),
 		upper95: series.map(serie => ({ y: serie.upper95, x: serie.x })),
 		lower05: series.map(serie => ({ y: serie.lower05, x: serie.x }))
