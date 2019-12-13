@@ -1,6 +1,6 @@
 import React from "react";
-import Menu from "../menu";
-import RiskLevelSelector from "../risk-level-selector";
+import Menu from "./menu";
+import RiskLevelSelector from "./risk-level-selector";
 
 export default props => (
 	<>

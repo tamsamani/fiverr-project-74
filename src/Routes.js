@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Table from "./table";
-import Chart from "./chart";
+import Table from "./components/table";
+import Chart from "./components/chart";
 
 export default ({ riskLevel, cones, children }) => (
 	<Router>

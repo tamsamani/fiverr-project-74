@@ -1,6 +1,6 @@
 const React = require("react");
 import PropTypes from "prop-types";
-import { calculateTimeSeries } from "./utils";
+import { calculateTimeSeries } from "../modules/utils";
 
 class Table extends React.Component {
 	render() {

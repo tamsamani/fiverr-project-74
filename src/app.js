@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-import Loader from "./components/Loader";
 import Routes from "./Routes";
+import Loader from "./components/Loader";
 import Header from "./components/Header";
 
 export default class App extends React.Component {

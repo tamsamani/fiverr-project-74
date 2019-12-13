@@ -20,6 +20,7 @@ in this minor version I will change in API getting & store managmement app
 
 -   `cones.json` no longer loaded as static from json in chart & table pages.
 -   replace routes to `<Routes />` Component who wrapped whole routes seperatly.
+-   move each component & module to Right folder instead keep all in `src/` root.
 
 **FIXED**
 

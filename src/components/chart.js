@@ -1,6 +1,6 @@
 import React from "react";
 import { Chart as ChartJs } from "chart.js";
-import { calculateTimeSeries } from "./utils";
+import { calculateTimeSeries } from "../modules/utils";
 
 class Chart extends React.Component {
 	componentDidMount() {
