@@ -14,7 +14,7 @@ function mapDate({ t, mu, sigma, fee, initialSum, monthlySum }) {
 	let median = initialReturn + overallReturn / (exp(monthlyReturn) - 1.0);
 
 	return {
-		median: median,
+		median,
 		upper95: exp(Math.log(median) + sqrt(t) * sigma * 1.645),
 		lower05: exp(Math.log(median) - sqrt(t) * sigma * 1.645)
 	};
@@ -33,9 +33,7 @@ const calculateTimeSeries = ({ years, mu, sigma, fee, initialSum, monthlySum }) 
 		lower05: series.map(serie => ({ y: serie.lower05, x: serie.x }))
 	};
 
-	/**
-	 * We have remove a low long serial calculation by give above directly
-	 */
+	//  We have remove a low long serial calculation by give above directly
 
 	return allSeries;
 };

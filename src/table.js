@@ -18,6 +18,9 @@ class Table extends React.Component {
 			fee
 		});
 
+		// remove component unecessary usage
+		const tableHeaders = ["month", "good", "median", "bad"];
+
 		const months = timeSeries.median.map((v, idx) => idx);
 		const dataGood = timeSeries.upper95.map(v => v.y);
 		const dataMedian = timeSeries.median.map(v => v.y);
@@ -31,9 +34,6 @@ class Table extends React.Component {
 				<td>{dataBad[idx]}</td>
 			</tr>
 		));
-
-		// remove component unecessary usage
-		const tableHeaders = ["month", "good", "median", "bad"];
 
 		return (
 			<table>
@@ -51,7 +51,7 @@ class Table extends React.Component {
 }
 
 Table.defaultProps = {
-	riskLevel: 3
+	riskLevel: 10
 };
 
 Table.propTypes = {

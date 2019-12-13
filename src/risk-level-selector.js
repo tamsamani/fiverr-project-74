@@ -2,18 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class RiskLevelSelector extends React.Component {
-
 	// not required bind or declare class by babel plugin proposal class properties.
 	onChange = event => {
-		let { onChangeRiskLevel } = this.props;
-		let riskLevel = parseInt(event.target.value);
+		const { onChangeRiskLevel } = this.props;
+		const riskLevel = parseInt(event.target.value);
 		onChangeRiskLevel(riskLevel);
 	};
 
 	render() {
 		const { minRiskLevel, maxRiskLevel } = this.props;
-		let defultRiskl = 10;
+		const defultRiskl = 10;
 		const options = [];
+
 		for (let k = 1; k <= maxRiskLevel; k++) {
 			options.push(
 				<option key={k} value={k}>
@@ -33,6 +33,7 @@ class RiskLevelSelector extends React.Component {
 	}
 }
 
+// FIXME from cones set defaults.
 RiskLevelSelector.defaultProps = {
 	minRiskLevel: 3,
 	maxRiskLevel: 25,
