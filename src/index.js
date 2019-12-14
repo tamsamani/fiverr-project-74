@@ -5,6 +5,9 @@ import App from "./app";
 import { Provider } from "./modules/store";
 import { storeReducer, initialState } from "./modules/reducer";
 
+// import bootstrap styling
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // store functionality
 function AppIndex() {
 	const useStore = useReducer(storeReducer, initialState);
