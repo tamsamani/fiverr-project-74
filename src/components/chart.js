@@ -5,16 +5,15 @@ import { calculateTimeSeries } from "../modules/utils";
 import storeContext from "../modules/store";
 
 function initChartData(state) {
-	const { riskLevel, initialIvestement, cones } = state;
+	const { riskLevel, initialIvestement, fee, years, monthlySum, cones } = state;
 	const { mu, sigma } = cones.filter(cone => cone.riskLevel == riskLevel)[0];
-	const fee = 0.01;
 
 	const timeSeries = calculateTimeSeries({
 		mu,
 		sigma,
-		years: 10,
+		years,
 		initialSum: initialIvestement,
-		monthlySum: 200,
+		monthlySum,
 		fee
 	});
 
@@ -90,7 +89,6 @@ function drawChart(canvasRef, state, dispatch) {
 	const context = canvas.getContext("2d");
 	return new ChartJs(context, config);
 }
-
 
 // this is more pereformanced but isn't use now
 // FIXME find a way to update chat witout rendring a whole component

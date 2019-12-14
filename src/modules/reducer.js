@@ -6,6 +6,9 @@ export const initialState = {
 	loaded: false,
 	riskLevel: 10, // defaul risk level
 	initialIvestement: 10000, // initial sum
+	monthlySum: 200,
+	fee: 0.01,
+	years: 10,
 	maxRiskLevel: 0,
 	minRiskLevel: 0,
 	error: null
@@ -45,6 +48,21 @@ export function storeReducer(state, action) {
 			return {
 				...state,
 				initialIvestement: action.payload.initialIvestement
+			};
+		case "CHANGE_MONTHSUM":
+			return {
+				...state,
+				monthlySum: action.payload.monthlySum
+			};
+		case "CHANGE_FEE":
+			return {
+				...state,
+				fee: action.payload.fee
+			};
+		case "CHANGE_YEARS":
+			return {
+				...state,
+				years: action.payload.years
 			};
 		default:
 			return state;

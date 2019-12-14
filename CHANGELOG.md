@@ -18,6 +18,7 @@ added some controlers & features to app.
 **CHANGED**
 
 -   update chart for no longer required update state of chart. (auto change on dispatch).
+-   apply new features on state data view.
 
 ### version 1.0.2 (13/12/2019)
 
