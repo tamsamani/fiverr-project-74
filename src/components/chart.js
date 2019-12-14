@@ -1,14 +1,22 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import { Chart as ChartJs } from "chart.js";
 import { calculateTimeSeries } from "../modules/utils";
 
 import storeContext from "../modules/store";
 
-function initChartData(riskLevel, cones) {
+function initChartData(state) {
+	const { riskLevel, initialIvestement, cones } = state;
 	const { mu, sigma } = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 	const fee = 0.01;
 
-	const timeSeries = calculateTimeSeries({ mu, sigma, years: 10, initialSum: 10000, monthlySum: 200, fee });
+	const timeSeries = calculateTimeSeries({
+		mu,
+		sigma,
+		years: 10,
+		initialSum: initialIvestement,
+		monthlySum: 200,
+		fee
+	});
 
 	const labels = timeSeries.median.map((v, idx) => (idx % 12 == 0 ? idx / 12 : ""));
 	const dataMedian = timeSeries.median.map(v => v.y);
@@ -47,10 +55,11 @@ function initChartData(riskLevel, cones) {
 function drawChart(canvasRef, state, dispatch) {
 	const { riskLevel, cones } = state;
 
-	const data = initChartData(riskLevel, cones);
+	const data = initChartData(state);
 
 	const options = {
 		responsive: false,
+		maintainAspectRatio: false,
 		scales: {
 			xAxes: [
 				{
@@ -82,14 +91,30 @@ function drawChart(canvasRef, state, dispatch) {
 	return new ChartJs(context, config);
 }
 
+
+// this is more pereformanced but isn't use now
+// FIXME find a way to update chat witout rendring a whole component
+const updateChart = (chart, state) => {
+	// console.log(chart, riskLevel, state.cones);
+	if (chart) {
+		let data = initChartData(state);
+		console.log(chart);
+		chart.data.datasets.forEach((dataset, i) => {
+			dataset.data = data.datasets[i].data;
+		});
+		chart.update();
+		console.log(data);
+	}
+};
+
 const Chart = () => {
+	console.log("Chart rendered");
 	const [state, dispatch] = useContext(storeContext);
 	const canvasRef = useRef(null);
-	const [chart, setChart] = useState(null);
 
 	useEffect(() => {
-		const initChart = drawChart(canvasRef, state, dispatch);
-		setChart(initChart);
+		console.log("init");
+		drawChart(canvasRef, state, dispatch);
 	}, []);
 
 	return (

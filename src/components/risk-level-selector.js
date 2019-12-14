@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import storeContext from "../modules/store";
 
-const RiskLevelSelector = props => {
+const RiskLevelSelector = () => {
 	const [state, dispatch] = useContext(storeContext);
 
 	const { minRiskLevel, maxRiskLevel } = state;
@@ -14,10 +14,6 @@ const RiskLevelSelector = props => {
 		const riskLevel = parseInt(event.target.value);
 		dispatch({ type: "CHANGE_RISK_LEVEL", payload: { riskLevel } });
 	};
-
-	// useEffect(() => {
-	// 	console.log(state);
-	// }, []);
 
 	// Fix non-exist risk values.
 	for (let k = minRiskLevel; k <= maxRiskLevel; k++) {

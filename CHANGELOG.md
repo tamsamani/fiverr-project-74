@@ -10,6 +10,14 @@ here I will describe all changes in code.
 
 added some controlers & features to app.
 
+**ADDED**
+
+-   add Feature for change & set initial Investement budget.
+
+**CHANGED**
+
+-   update chart for no longer required update state of chart. (auto change on dispatch).
+
 ### version 1.0.2 (13/12/2019)
 
 ---

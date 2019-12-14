@@ -7,7 +7,7 @@ import storeContext from "../modules/store";
 const Table = () => {
 	const state = useContext(storeContext)[0];
 
-	const { riskLevel, cones } = state;
+	const { riskLevel, initialIvestement, cones } = state;
 	const cone = cones.filter(cone => cone.riskLevel == riskLevel)[0];
 	const fee = 0.01;
 
@@ -15,7 +15,7 @@ const Table = () => {
 		mu: cone.mu,
 		sigma: cone.sigma,
 		years: 10,
-		initialSum: 10000,
+		initialSum: initialIvestement,
 		monthlySum: 200,
 		fee
 	});
