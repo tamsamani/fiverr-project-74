@@ -5,6 +5,7 @@ export const initialState = {
 	cones: null,
 	loaded: false,
 	riskLevel: 10, // defaul risk level
+	initialIvestement: 10000, // initial sum
 	maxRiskLevel: 0,
 	minRiskLevel: 0,
 	error: null
@@ -24,7 +25,6 @@ export function storeReducer(state, action) {
 			};
 		case "UPDATE_CONES":
 			cones = action.payload.cones;
-
 			return {
 				...state,
 				cones,
@@ -40,6 +40,11 @@ export function storeReducer(state, action) {
 			return {
 				...state,
 				riskLevel: action.payload.riskLevel
+			};
+		case "CHANGE_INITSUM":
+			return {
+				...state,
+				initialIvestement: action.payload.initialIvestement
 			};
 		default:
 			return state;
