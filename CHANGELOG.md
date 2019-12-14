@@ -13,6 +13,7 @@ added some controlers & features to app.
 **ADDED**
 
 -   add Feature for change & set initial Investement budget.
+-   add Another Features for other Inputs (like fee, years ...).
 
 **CHANGED**
 
