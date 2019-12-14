@@ -4,6 +4,16 @@
 
 here I will describe all changes in code.
 
+### version 1.0.4 (14/12/2019)
+
+---
+
+make the webpage beauty. by add style & some animations.
+
+**ADDED**
+
+-   add `React-bootstrap` & `bootstrap` as UI Library
+
 ### version 1.0.3 (13/12/2019)
 
 ---
