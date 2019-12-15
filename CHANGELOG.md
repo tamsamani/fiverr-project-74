@@ -13,6 +13,17 @@ make the webpage beauty. by add style & some animations.
 **ADDED**
 
 -   add `React-bootstrap` & `bootstrap` as UI Library
+-	add Formater for Currency (to keep price vlaue clear)
+-	add Styled Slider for `bootstrap`
+-	add `Layout`
+
+
+**CHANGED**
+
+-	Update Inputs by `bootstrap` Style.
+-	Change Select by Slider in Some Features.
+-	Change General Page Partitions by add `<Layout />`
+-	Change Loader Spinner instead static text.
 
 ### version 1.0.3 (13/12/2019)
 
