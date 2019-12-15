@@ -3,9 +3,10 @@ import axios from "axios";
 
 import Routes from "./Routes";
 import Loader from "./components/Loader";
-import Header from "./components/Header";
 
 import storeContext from "./modules/store";
+import Container from "react-bootstrap/Container";
+import { Row } from "react-bootstrap";
 
 function loadData(state, dispatch) {
 	axios
@@ -34,12 +35,12 @@ function App(props) {
 		loadData(state, dispatch);
 	}
 
-	return !state.loaded ? (
-		<Loader />
-	) : (
-		<Routes>
-			<Header />
-		</Routes>
+	return (
+		<Container>
+			<Row className="justify-content-center align-items-center min-vh-100">
+				{!state.loaded ? <Loader /> : <Routes />}
+			</Row>
+		</Container>
 	);
 }
 

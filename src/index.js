@@ -7,6 +7,7 @@ import { storeReducer, initialState } from "./modules/reducer";
 
 // import bootstrap styling
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 
 // store functionality
 function AppIndex() {
