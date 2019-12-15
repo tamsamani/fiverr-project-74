@@ -1,35 +1,37 @@
 import React, { useContext } from "react";
 
 import storeContext from "../modules/store";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 export default () => {
-
 	const [state, dispatch] = useContext(storeContext);
 
-	const defultRisk = 10; // defaut 10 years
+	const defaultRisk = 10; // defaut 10 years
 
 	const onChangeYear = event => {
 		const years = parseInt(event.target.value);
 		dispatch({ type: "CHANGE_YEARS", payload: { years } });
 	};
 
-	const options = [];
-
-	// Fix non-exist risk values.
-	for (let k = 1; k <= 15; k++) {
-		options.push(
-			<option key={k} value={k}>
-				{k}
-			</option>
-		);
-	}
-
 	return (
-		<div>
-			Number of Years:
-			<select onChange={onChangeYear} defaultValue={defultRisk}>
-				{options}
-			</select>
-		</div>
+		<InputGroup className="mb-3">
+			<InputGroup.Prepend>
+				<InputGroup.Text id="invest-years">Years</InputGroup.Text>
+			</InputGroup.Prepend>
+			<FormControl
+				as="input"
+				type="range"
+				className="slider"
+				onChange={onChangeYear}
+				defaultValue={defaultRisk}
+				min={1}
+				max={25}
+				aria-label="Years"
+				aria-describedby="invest-years"
+			/>
+			<InputGroup.Append>
+				<InputGroup.Text>{state.years}</InputGroup.Text>
+			</InputGroup.Append>
+		</InputGroup>
 	);
 };

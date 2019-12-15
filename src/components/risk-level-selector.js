@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import storeContext from "../modules/store";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 const RiskLevelSelector = () => {
 	const [state, dispatch] = useContext(storeContext);
@@ -25,12 +26,24 @@ const RiskLevelSelector = () => {
 	}
 
 	return (
-		<div>
-			Risk level:
-			<select onChange={onChangeRisk} defaultValue={defultRisk}>
-				{options}
-			</select>
-		</div>
+		<InputGroup className="mb-3">
+			<InputGroup.Prepend>
+				<InputGroup.Text id="risk-level">Risk Level</InputGroup.Text>
+			</InputGroup.Prepend>
+			<FormControl
+				as="input"
+				type="range"
+				className="slider"
+				onChange={onChangeRisk}
+				max={maxRiskLevel}
+				min={minRiskLevel}
+				defaultValue={defultRisk}
+				aria-describedby="risk-level"
+			/>
+			<InputGroup.Append>
+				<InputGroup.Text>{state.riskLevel}</InputGroup.Text>
+			</InputGroup.Append>
+		</InputGroup>
 	);
 };
 
