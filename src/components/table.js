@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import BTable from "react-bootstrap/Table";
 import { calculateTimeSeries } from "../modules/utils";
 
 import storeContext from "../modules/store";
+
+// I choose de-DE because it more clear in format Currency
+const FormatCurrency = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format;
 
 const Table = () => {
 	const state = useContext(storeContext)[0];
@@ -30,14 +34,14 @@ const Table = () => {
 	const rows = months.map((entry, idx) => (
 		<tr key={idx}>
 			<td>{entry}</td>
-			<td>{dataGood[idx]}</td>
-			<td>{dataMedian[idx]}</td>
-			<td>{dataBad[idx]}</td>
+			<td>{FormatCurrency(dataGood[idx])}</td>
+			<td>{FormatCurrency(dataMedian[idx])}</td>
+			<td>{FormatCurrency(dataBad[idx])}</td>
 		</tr>
 	));
 
 	return (
-		<table>
+		<BTable striped bordered hover size="sm">
 			<thead>
 				<tr>
 					{tableHeaders.map(key => (
@@ -46,7 +50,7 @@ const Table = () => {
 				</tr>
 			</thead>
 			<tbody>{rows}</tbody>
-		</table>
+		</BTable>
 	);
 };
 
