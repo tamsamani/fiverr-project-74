@@ -2,6 +2,24 @@
 
 this Project contain Change Log for All Paased Version Step located in [CHANGELOG]
 
+### Initialize project
+
+after clone the project or unzip it 
+
+go to directory and open termianl & run those following commands :
+
+using NPM
+
+```bash
+npm init
+```
+
+or using Yarn 
+
+```bash
+yarn
+```
+
 ### Run Script
 
 ```bash
